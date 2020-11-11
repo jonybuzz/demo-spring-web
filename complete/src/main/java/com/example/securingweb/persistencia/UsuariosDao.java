@@ -1,6 +1,6 @@
 package com.example.securingweb.persistencia;
 
-import com.example.securingweb.dominio.Usuario;
+import com.example.securingweb.negocio.dominio.Usuario;
 import static java.util.Arrays.asList;
 import java.util.List;
 

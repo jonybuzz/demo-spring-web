@@ -5,7 +5,15 @@
     </head>
     <body>
         <h1>Welcome!</h1>
-        
+
         <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+        <p>Click <a href="/hello">here</a> to see a greeting.</p>
+        <th:block th:if="estanLosObjetos">
+            Hello <span th:text="${mensaje}"></span>
+            <div th:if="${usuario.habilitado}">dsadad</div>
+            <div th:for="${us : usuarios}">
+                <p th:text="${us.name}"></p>
+            </div>
+        </th:block>
     </body>
 </html>

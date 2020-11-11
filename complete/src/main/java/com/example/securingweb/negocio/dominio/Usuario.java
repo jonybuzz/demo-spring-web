@@ -1,4 +1,4 @@
-package com.example.securingweb.dominio;
+package com.example.securingweb.negocio.dominio;
 
 public class Usuario {
 
