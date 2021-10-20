@@ -3,14 +3,18 @@ package com.example.springmvc.presentacion;
 import com.example.springmvc.modelo.Mascota;
 import com.example.springmvc.persistencia.RepositorioMascotas;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class MascotaController {
 
     private final RepositorioMascotas repoMascotas;
@@ -22,6 +26,17 @@ public class MascotaController {
     @GetMapping("/mascotas")
     public ResponseEntity<List<Mascota>> obtenerTodas() {
         return ResponseEntity.status(200).body(repoMascotas.obtenerTodas());
+    }
+
+    @GetMapping("/mascotas/{id}")
+    public ResponseEntity<Mascota> obtenerPorId(@PathVariable Integer id) {
+        final Optional<Mascota> mascota = repoMascotas.obtenerTodas().stream().filter(m -> m.getId() == id).findFirst();
+        if(mascota.isPresent()){
+            return ResponseEntity.status(200)
+                    .body(mascota.get());
+        } else {
+            return ResponseEntity.status(404).build();
+        }
     }
 
     @PostMapping("/mascotas")

@@ -2,8 +2,18 @@ package com.example.springmvc.modelo;
 
 public class Mascota {
 
+    private Integer id;
     private String nombre;
     private Raza raza;
+    private Boolean activa = true;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -19,6 +29,14 @@ public class Mascota {
 
     public void setRaza(Raza raza) {
         this.raza = raza;
+    }
+
+    public Boolean getActiva() {
+        return activa;
+    }
+
+    public void setActiva(Boolean activa) {
+        this.activa = activa;
     }
 
     @Override
