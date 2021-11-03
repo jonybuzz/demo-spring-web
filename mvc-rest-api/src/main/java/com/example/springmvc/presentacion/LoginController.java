@@ -27,7 +27,7 @@ public class LoginController {
 
         //validamos user/pass y buscamos datos de ese usuario para agregar en la sesión
 
-        Dueño dueño = repoDueños.obtenerLuna(); //hardcode: siempre loguea a Jose
+        Dueño dueño = repoDueños.obtenerJose(); //hardcode: siempre loguea a Jose
         System.out.println("Login: " + loginRequest);
         System.out.println("Login: " + dueño);
 

@@ -52,6 +52,7 @@ public class PerfilController {
             return ResponseEntity.status(404).build();
         }
 
+        //lo que quiera hacer con el dueño
         MisDatos misDatos = new MisDatos();
         Dueño dueño = repoDueños.obtenerTodos().stream().filter(d -> d.getId() == dueñoSesion.getId()).findFirst().get();
         misDatos.setNombre(dueño.getNombre());
