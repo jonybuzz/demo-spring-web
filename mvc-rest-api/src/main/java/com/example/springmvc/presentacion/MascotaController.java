@@ -1,5 +1,6 @@
 package com.example.springmvc.presentacion;
 
+import com.example.springmvc.modelo.Imagen;
 import com.example.springmvc.modelo.Mascota;
 import com.example.springmvc.persistencia.RepositorioMascotas;
 import org.springframework.http.ResponseEntity;
@@ -31,12 +32,19 @@ public class MascotaController {
     @GetMapping("/mascotas/{id}")
     public ResponseEntity<Mascota> obtenerPorId(@PathVariable Integer id) {
         final Optional<Mascota> mascota = repoMascotas.obtenerTodas().stream().filter(m -> m.getId() == id).findFirst();
-        if(mascota.isPresent()){
+        if (mascota.isPresent()) {
             return ResponseEntity.status(200)
                     .body(mascota.get());
         } else {
             return ResponseEntity.status(404).build();
         }
+    }
+
+    @GetMapping("/mascotas/{id}/imagen")
+    public ResponseEntity<Imagen> obtenerImagenPorId(@PathVariable Integer id) {
+        final Imagen imagen = repoMascotas.obtenerImagenPorId(id);
+        return ResponseEntity.status(200)
+                .body(imagen);
     }
 
     @PostMapping("/mascotas")
@@ -48,7 +56,7 @@ public class MascotaController {
     }
 
     private void validarNuevaMascota(Mascota mascota) {
-        if(mascota.getNombre() == null) {
+        if (mascota.getNombre() == null) {
             throw new IllegalArgumentException("El nombre es obligatorio, elegí otro");
         }
     }
