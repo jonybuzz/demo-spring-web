@@ -41,4 +41,11 @@ public class Dueño {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Dueño{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                '}';
+    }
 }

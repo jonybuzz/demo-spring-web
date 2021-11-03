@@ -34,7 +34,7 @@ public class RepositorioDueños {
     public Dueño obtenerLuna() {
         Dueño jose = new Dueño();
         jose.setNombre("Luna");
-        jose.setId(1);
+        jose.setId(2);
         jose.setPassword("&&&&&&&");
 
         Mascota mimi = new Mascota();
