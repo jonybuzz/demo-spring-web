@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Map;
 
 @RestController
@@ -45,6 +46,9 @@ public class PerfilController {
     public ResponseEntity<MisDatos> obtenerMisDatos(@RequestHeader("Authorization") String idSesion) {
 
         Map<String, Object> atributosSesion = SesionManager.get().obtenerAtributos(idSesion);
+
+//        Date fechaInicioSesion = (Date) atributosSesion.get("fechaInicio");
+
         Dueño dueñoSesion = (Dueño) atributosSesion.get("dueño");
         System.out.println("Obteniendo datos de: " + dueñoSesion);
 

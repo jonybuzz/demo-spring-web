@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 @RestController
 @CrossOrigin
@@ -23,7 +22,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
+    public LoginResponse login(@RequestBody LoginRequest loginRequest) {
 
         //validamos user/pass y buscamos datos de ese usuario para agregar en la sesión
 
@@ -32,7 +31,10 @@ public class LoginController {
         System.out.println("Login: " + dueño);
 
         SesionManager sesionManager = SesionManager.get();
-        String idSesion = sesionManager.crear("dueño", dueño);
+        String idSesion = sesionManager.crearSesion("dueño", dueño);
+
+//        sesionManager.agregarAtributo("fechaInicio", new Date());
+//        sesionManager.agregarAtributo("rol", repoRoles.getByUser(idUser));
 
         return new LoginResponse(idSesion);
     }

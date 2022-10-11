@@ -21,17 +21,17 @@ public class SesionManager {
         return instancia;
     }
 
-    public String crear() {
-        return this.crear(new HashMap<>());
+    public String crearSesion() {
+        return this.crearSesion(new HashMap<>());
     }
 
-    public String crear(String clave, Object valor) {
+    public String crearSesion(String clave, Object valor) {
         HashMap<String, Object> atributo = new HashMap<>();
         atributo.put(clave, valor);
-        return this.crear(atributo);
+        return this.crearSesion(atributo);
     }
 
-    public String crear(Map<String, Object> atributos) {
+    public String crearSesion(Map<String, Object> atributos) {
         String id = UUID.randomUUID().toString();
         this.sesiones.put(id, atributos);
         return id;
