@@ -40,8 +40,9 @@ public class MascotaController {
         //validar accion en capa modelo según roles o usuario asociados al idSesion
         Template template = handlebars.compile("/templates/index");
         List<Mascota> mascotas = repoMascotas.obtenerTodas();
+
         Map<String, Object> model = new HashMap<>();
-        model.put("mascotas", mascotas);
+        model.put("listamascotas", mascotas);
 
         String html = template.apply(model);
 
